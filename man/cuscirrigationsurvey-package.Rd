@@ -4,7 +4,7 @@
 \name{cuscirrigationsurvey-package}
 \alias{cuscirrigationsurvey}
 \alias{cuscirrigationsurvey-package}
-\title{cuscirrigationsurvey: What the Package Does (One Line, Title Case)}
+\title{cuscirrigationsurvey: Irrigation Survey Data from Clemson University Extension, 1997-2000}
 \description{
 A dataset compiled from surveys conducted by Clemson Extension Field Agents from 1997-2000.
 }

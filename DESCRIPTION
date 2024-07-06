@@ -1,13 +1,13 @@
 Package: cuscirrigationsurvey
-Title: What the Package Does (One Line, Title Case)
+Title: Irrigation Survey Data from Clemson University Extension, 1997-2000
 Version: 0.0.0.9000
 Authors@R: c(
     person("C A", "Pellett", , "c.alex.pellett@gmail.com", role = c("aut", "cre")),
-    person("W Bryan", "Smith", , "wsmth@clemson.edu", role = c("aut", "cre")),
+    person("W Bryan", "Smith", , "wsmth@clemson.edu", role = c("aut")),
     person("State of South Carolina Department of Natural Resources", role = "fnd")
   )
 Description: A dataset compiled from surveys conducted by Clemson Extension Field Agents from 1997-2000.
-URL: https://github.com/capellett/cuscirrigationsurvey
+URL: https://github.com/capellett/cuscirrigationsurvey, https://capellett.github.io/cuscirrigationsurvey/
 BugReports: https://github.com/capellett/cuscirrigationsurvey/issues
 Suggests: 
     testthat (>= 3.0.0)
