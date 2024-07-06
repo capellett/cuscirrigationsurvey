@@ -28,6 +28,9 @@ by each category of irrigation distribution system.
 \details{
 Data collected by county extension agents in South Carolina.
 }
+\references{
+Irrigation Journal (2001)
+}
 \seealso{
 \link{crops}, \link{irr_attributes}
 }

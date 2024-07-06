@@ -7,7 +7,7 @@ Authors@R: c(
     person("State of South Carolina Department of Natural Resources", role = "fnd")
   )
 Description: A dataset compiled from surveys conducted by Clemson Extension Field Agents from 1997-2000.
-URL: https://github.com/capellett/cuscirrigationsurvey
+URL: https://github.com/capellett/cuscirrigationsurvey, https://capellett.github.io/cuscirrigationsurvey/
 BugReports: https://github.com/capellett/cuscirrigationsurvey/issues
 Suggests: 
     testthat (>= 3.0.0)

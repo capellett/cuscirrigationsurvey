@@ -15,7 +15,7 @@
 #'
 #' @details Data collected by county extension agents in South Carolina. 
 #' @source W Bryan Smith, Area Extension Agent, Clemson University
-#' @reference Irrigation Journal (2001)  
+#' @references Irrigation Journal (2001)  
 #' @seealso [crops], [irr_attributes]  
 'categories'
 
@@ -34,7 +34,7 @@
 #'  
 #' @details Data collected by county extension agents in South Carolina. 
 #' @source W Bryan Smith, Area Extension Agent, Clemson University
-#' @reference Irrigation Journal (2001)  
+#' @references Irrigation Journal (2001)  
 #' @seealso [categories], [irr_attributes]  
 'crops'
 
@@ -55,6 +55,6 @@
 #'  
 #' @details Data collected by county extension agents in South Carolina. 
 #' @source W Bryan Smith, Area Extension Agent, Clemson University  
-#' @reference Irrigation Journal (2001)  
+#' @references Irrigation Journal (2001)  
 #' @seealso [categories], [crops]  
 'irr_attributes'

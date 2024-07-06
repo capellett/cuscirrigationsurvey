@@ -25,4 +25,13 @@ irr_attributes
 A dataset with the amount of acreage irrigated each year in each county
 by each category of irrigation distribution system.
 }
+\details{
+Data collected by county extension agents in South Carolina.
+}
+\references{
+Irrigation Journal (2001)
+}
+\seealso{
+\link{categories}, \link{crops}
+}
 \keyword{datasets}

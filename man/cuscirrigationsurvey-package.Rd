@@ -19,6 +19,7 @@ W Bryan Smith
 Useful links:
 \itemize{
   \item \url{https://github.com/capellett/cuscirrigationsurvey}
+  \item \url{https://capellett.github.io/cuscirrigationsurvey/}
   \item Report bugs at \url{https://github.com/capellett/cuscirrigationsurvey/issues}
 }
 

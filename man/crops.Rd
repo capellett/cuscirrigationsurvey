@@ -23,4 +23,13 @@ crops
 \description{
 A dataset with the amount of acreage for each irrigated crop each year in each county.
 }
+\details{
+Data collected by county extension agents in South Carolina.
+}
+\references{
+Irrigation Journal (2001)
+}
+\seealso{
+\link{categories}, \link{irr_attributes}
+}
 \keyword{datasets}
