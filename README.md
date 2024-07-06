@@ -6,28 +6,16 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of cuscirrigationsurvey is to …
+*cuscirrigationsurvey* is an *R* package that contains survey data
+compiled from South Carolina County Extension Agents of Clemson
+University annually from 1997-2000. Some of this data was published
+previously in Irrigation Journal (2001), but *cuscirrigationsurvey* is
+likely the most thorough compilation of that work available today. The
+package author received the data from W. Bryan Smith, Area Extension
+Agent and director of the irrigation survey efforts from 1998-2000. The
+survey was conducted prior to 1997, however that data has not been found
+or made available to the package author.
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
-
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
-
-You can also embed plots, for example:
-
-![](README_files/figure-gfm/pressure-1.png)<!-- -->
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub.
+The data was gathered each year by county agents for their own county;
+Some used a combination of calling large farmers and FSA data, others
+contacted farmers.

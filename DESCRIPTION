@@ -1,17 +1,21 @@
 Package: cuscirrigationsurvey
-Title: Data from the Clemson University Extension Agricultural Irrigation
-    Survey 1997-2000
+Title: What the Package Does (One Line, Title Case)
 Version: 0.0.0.9000
 Authors@R: c(
     person("C A", "Pellett", , "c.alex.pellett@gmail.com", role = c("aut", "cre")),
+    person("W Bryan", "Smith", , "wsmth@clemson.edu", role = c("aut", "cre")),
     person("State of South Carolina Department of Natural Resources", role = "fnd")
   )
-Description: A daaset compiled from a survey conducted by Clemson
-    Extension Field Agents.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: A dataset compiled from surveys conducted by Clemson Extension Field Agents from 1997-2000.
 URL: https://github.com/capellett/cuscirrigationsurvey
 BugReports: https://github.com/capellett/cuscirrigationsurvey/issues
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
+License: MIT + file LICENSE
