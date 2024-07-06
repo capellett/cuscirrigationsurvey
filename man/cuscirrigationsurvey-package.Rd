@@ -27,6 +27,11 @@ Useful links:
 \author{
 \strong{Maintainer}: C A Pellett \email{c.alex.pellett@gmail.com}
 
+Authors:
+\itemize{
+  \item W Bryan Smith \email{wsmth@clemson.edu}
+}
+
 Other contributors:
 \itemize{
   \item State of South Carolina Department of Natural Resources [funder]
