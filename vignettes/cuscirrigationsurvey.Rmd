@@ -1,0 +1,147 @@
+---
+title: "Clemson University South Carolina Irrigation Survey"
+author: "C A Pellett"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Irrigation Distribution System Categories
+
+Here's a plot of the amount of acreage irrigated by the different categories of distribution system:
+  
+```{r echo=F}
+cuscirrigationsurvey::categories |>
+  dplyr::filter(is.na(Subcategory) | Subcategory %in% c(
+    'Total Sprinkler Acreage', 'Total Drip Acreage', 'Total Gravity Acreage')) |>
+  dplyr::group_by(Year, Category) |>
+  dplyr::summarise(`Acres (thousands)`= sum(Acres)/1000, .groups='keep') |>
+  ggplot2::ggplot(
+    ggplot2::aes(x=Year, y=`Acres (thousands)`, color=Category)) +
+  ggplot2::geom_line() +
+  ggplot2::theme_bw() +
+  ggplot2::ggtitle('Irrigated Acreage by Distribution System') +
+  ggplot2::theme(legend.position='bottom', legend.title=ggplot2::element_blank())
+# ggplot2::ggsave('CU Irrigated Acreage by Distribution System')
+
+## use linetype instead of color to distinguish the lines.
+## gravity = solid, low flow = dashed, sprinkler = dotted, total = solid and size 1.
+```
+We  see that sprinkler irrigation is the largest and fastest growing kind of irrigation distribution system, accounting for a majority of total irrigated acreage and nearly all of the increase in irrigated acreage from 1998-2000. Now let's look closer at each of these three categories of irrigation distribution system.
+
+```{r echo=F}
+## then each distribution system category gets a statewide graph of subcategories.
+cu_irrigation_subcategory <- cuscirrigationsurvey::categories |> dplyr::filter(
+  Category %in% c("Sprinkler", "Gravity/Flood", "Low Flow / Drip") &
+    !(stringr::str_sub(Subcategory, 0,1) == '%')) |>
+  dplyr::mutate(Acres = dplyr::if_else(is.na(Acres), 0, Acres)) |>
+  dplyr::group_by(Year, Category, Subcategory) |>
+  dplyr::summarise(Acres = sum(Acres, na.rm=T), .groups='keep') |>
+  dplyr::ungroup()
+
+cu_irrigation_subcategory |>
+  dplyr::group_by(Category) |>
+  dplyr::group_walk(function(.x, .y) {
+    p <- ggplot2::ggplot(.x, ggplot2::aes(x=Year, y=Acres, color=Subcategory)) +
+      ggplot2::geom_line() +
+      ggplot2::theme_bw() +
+      ggplot2::ggtitle(paste0('Acreage Irrigated by ', .y$Category)) +
+      ggplot2::theme(legend.title=ggplot2::element_blank())
+    print(p)
+  })
+```
+Here we see that Center Pivot/Linear Move sprinklers are the most common kind of sprinkler; surface drip irrigation is the most common kind of Low Flow / Drip irrigation; and Subsurface / Seepage is the most common kind of Flood / Gravity irrigation. There are many other kinds of irrigation distribution systems in South Carolina, but they were not common during this period (and generally still aren't today).
+
+```{r echo=F}
+cuscirrigationsurvey::categories |>
+  tidyr::pivot_wider(names_from=Year, values_from='Acres') |>
+  scutils::reporTable()
+
+## and a table of major counties for each category, including the %columns for that category.
+## and a table of major counties, including power unit types, wells, and pumps.
+## represent the Percent data with annual bar chart
+
+```
+
+## Irrigated Crops
+
+There are 44 different crops included in this dataset. Below is a plot of the top 10 irrigated crops (by acreage).
+```{r echo=F}
+
+crops2 <- cuscirrigationsurvey::crops |>
+  dplyr::group_by(Year, Crop) |>
+  dplyr::summarise(Acres = sum(Acres, na.rm=T), .groups='drop')
+
+crops_rank <- crops2 |>
+  dplyr::group_by(Crop) |>
+  dplyr::summarise(Acres=sum(Acres, na.rm=T)) |>
+  dplyr::mutate(crop_rank = rank(-Acres)) |>
+  dplyr::select(Crop, crop_rank) |>
+  dplyr::arrange(crop_rank)
+
+crops3 <- crops2 |>
+  dplyr::left_join(crops_rank, 'Crop')
+```
+
+```{r echo=F}
+crops3 |>
+  dplyr::filter(crop_rank < 11) |>
+  ggplot2::ggplot(
+    ggplot2::aes(x=Year, y=Acres, group=Crop, color=Crop)) +
+  ggplot2::geom_line() +
+  ggplot2::theme_bw()
+
+
+```
+
+Corn and cotton were the two major irrigated crops, and there are many more minor irrigated crops. It isn't easy to see from the plot, but the third ranking irrigated crop is "Tree Fruits," which really means peaches mostly. 
+
+```{r echo=F}
+cuscirrigationsurvey::crops |>
+  tidyr::pivot_wider(names_from=Year, values_from='Acres') |>
+  scutils::reporTable()
+
+## and a table of major counties for each category, including the %columns for that category.
+## and a table of major counties, including power unit types, wells, and pumps.
+## represent the Percent data with annual bar chart
+
+```
+
+## Irrigation system  attributes
+
+There is still more information in this survey, which I've put in to a separate table. This includes information regarding the irrigation power sources, wells, and pumps. 
+
+```{r echo=F} 
+cuscirrigationsurvey::categories |>
+  tidyr::pivot_wider(names_from=Year, values_from='Acres') |>
+  scutils::reporTable()
+```
+
+
+```{r eval=F}
+## This information is tabulated as the percentages in each county. 
+## To estimate state-wide percentages, I'll weight the county percentages 
+## by the irrigated area in each county.
+
+total_acreage <- categories |>
+  dplyr::filter(is.na(Subcategory)) |>
+  dplyr::select(County, Year, Acres)
+
+irr_attributes_statewide <- irr_attributes |>
+  dplyr::filter(!(Subcategory %in% c('Ave Water Depth', 'Ave. Depth', 'Number'))) |>
+  dplyr::left_join(total_acreage, by=c("County", "Year")) |>
+  dplyr::mutate(Value = Value*Acres) |>
+  dplyr::select(County, Category, Subcategory, Year, Value) |>
+  dplyr::group_by(Category, Subcategory, Year) |>
+  dplyr::summarise(Value=sum(Value, na.rm=T), .groups='drop')
+
+irr_attributes |>
+  dplyr::select(Category, Subcategory) |>
+  unique()
+```
+
+
+
