@@ -20,5 +20,26 @@ survey was conducted prior to 1997, however that data has not been found
 or made available to the package author.
 
 The data was gathered each year by county agents for their own county;
-Some used a combination of calling large farmers and FSA data, others
-contacted farmers.
+Some used a combination of calling large farmers and referring to data
+from the Farm Service Agency, others contacted farmers. This dataset
+provides a unique perspective on irrigation in South Carolina, that is
+still relevant today. This survey effort was the most comprehensive ever
+before conducted, and there were no other comparable data collection
+efforts for years afterwards. Lacking comprehensive data, later reports
+regarding irrigation in SC estimated general declines from 2000 to 2010.
+More recently (~2015 - ~2020), reported irrigation in South Carolina has
+increased substantially. Hypothetically, some of the recent increase can
+be attributed to under-estimated values after the year 2000.
+
+To install the package using R, first install devtools (if you haven’t
+already):
+
+``` r
+install.package('devtools')
+```
+
+Then, install the package from github:
+
+``` r
+devtools::install_github("cepellett/cuscirrigationsurvey")
+```
